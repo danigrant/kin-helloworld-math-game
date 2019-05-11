@@ -1,3 +1,12 @@
+# This is the Kin SDK
+import kin
+
+# We'll be printing a few things to screen, so we also load pprint
+from pprint import pprint
+
+## for async await
+import asyncio
+
 async def kin_function():
     print('First we will create our KinClient object, and direct it to our test environment')
     async with kin.KinClient(kin.TEST_ENVIRONMENT) as client:
@@ -54,3 +63,5 @@ async def kin_function():
 
         tx_hash = await account.send_kin(new_keypair.public_address, amount=10, fee=100, memo_text='Hello World')
         print('The transaction succeeded with the hash {}'.format(tx_hash))
+
+asyncio.run(kin_function())
